@@ -18,13 +18,13 @@ for line in sys.stdin:
         continue
 
     if current_key == airport_date:
-        current_delay += delay
+        current_delay += max(0, delay)
         current_number += 1
     else:
         if current_key:
             airport, year, month = current_key.split("-")  # Rozdzielenie klucza składającego się z ID lotniska, roku i miesiąca
             print('{} {} {} {} {}'.format(airport, year, month, current_number, current_delay))
-        current_delay = delay
+        current_delay = max(0, delay)
         current_number = 1
         current_key = airport_date
 
